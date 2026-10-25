@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+
+  <body>
+    <div class="page-wrapper">
+      <!-- Header section: contains the app title and a small icon placeholder -->
+      <header class="app-header" aria-label="Weather dashboard header">
+        <div class="header-brand">
+          <span class="header-icon" aria-hidden="true">☀️</span>
+          <h1>Weather Dashboard</h1>
+        </div>
+      </header>
+
+      <main class="app-main">
+        <!-- Search section: allows the user to enter a city name and submit the search -->
+        <section class="search-section" aria-labelledby="search-heading">
+          <h2 id="search-heading">Search for a city</h2>
+
+          <form class="search-form" aria-label="Search for weather by city">
+            <label for="cityInput">City</label>
+            <div class="search-controls">
+              <input
+                type="text"
+                id="cityInput"
+                name="city"
+                placeholder="Enter city name"
+                autocomplete="off"
+              />
+              <button type="submit" id="searchBtn">Search</button>
+            </div>
+          </form>
+        </section>
+
+        <!-- Status messages: this area is hidden by default and will be shown by JavaScript -->
+        <div id="loading" class="status-message loading-message" role="status" aria-live="polite" hidden>
+          Loading weather data...
+        </div>
+        <div id="errorMessage" class="status-message error-message" role="alert" aria-live="assertive" hidden>
+          Unable to load weather information. Please try again.
+        </div>
+
+        <!-- Current weather section: shows the selected city and current conditions -->
+        <section class="current-weather-section" aria-labelledby="current-weather-title">
+          <div class="current-weather-header">
+            <h2 id="current-weather-title">Current Weather</h2>
+            <button
+              type="button"
+              id="unitToggle"
+              class="unit-toggle"
+              aria-label="Switch between Celsius and Fahrenheit"
+            >
+              °C
+            </button>
+          </div>
+
+          <div class="current-weather-card">
+            <div class="weather-summary">
+              <p id="cityName" class="city-name">City Name</p>
+              <p id="currentDate" class="current-date">Loading date...</p>
+            </div>
+
+            <div class="temperature-block">
+              <div id="weatherIcon" class="weather-icon" aria-label="Weather icon placeholder" aria-live="polite">
+                ☁️
+              </div>
+              <div class="temperature-details">
+                <p class="temperature-label">Temperature</p>
+                <p id="temperature" class="temperature-value">--°</p>
+              </div>
+            </div>
+
+            <p id="weatherCondition" class="weather-condition">Weather condition</p>
+
+            <ul class="weather-metadata" aria-label="Weather details">
+              <li>
+                <span class="meta-label">Humidity:</span>
+                <span id="humidity">--%</span>
+              </li>
+              <li>
+                <span class="meta-label">Wind Speed:</span>
+                <span id="windSpeed">-- km/h</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Forecast section: three forecast cards for the next few days -->
+        <section class="forecast-section" aria-labelledby="forecast-heading">
+          <h2 id="forecast-heading">3-Day Forecast</h2>
+
+          <div id="forecastContainer" class="forecast-container" aria-live="polite">
+            <article class="forecast-card" aria-label="Forecast day 1">
+              <p class="forecast-date">Date</p>
+              <div class="forecast-icon" aria-hidden="true">☀️</div>
+              <p class="forecast-condition">Condition</p>
+              <p class="forecast-temp">
+                <span class="forecast-min">Min: --°</span>
+                <span class="forecast-max">Max: --°</span>
+              </p>
+            </article>
+
+            <article class="forecast-card" aria-label="Forecast day 2">
+              <p class="forecast-date">Date</p>
+              <div class="forecast-icon" aria-hidden="true">🌤️</div>
+              <p class="forecast-condition">Condition</p>
+              <p class="forecast-temp">
+                <span class="forecast-min">Min: --°</span>
+                <span class="forecast-max">Max: --°</span>
+              </p>
+            </article>
+
+            <article class="forecast-card" aria-label="Forecast day 3">
+              <p class="forecast-date">Date</p>
+              <div class="forecast-icon" aria-hidden="true">🌧️</div>
+              <p class="forecast-condition">Condition</p>
+              <p class="forecast-temp">
+                <span class="forecast-min">Min: --°</span>
+                <span class="forecast-max">Max: --°</span>
+              </p>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer: project name and API note -->
+      <footer class="app-footer">
+        <p>Weather Dashboard</p>
+        <p>Weather information comes from a weather API.</p>
+      </footer>
+    </div>
+  </body>
+</html>
